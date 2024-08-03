@@ -70,13 +70,13 @@ describe('client deploy integration test', () => {
   });
 });
 
-function deploy(fixture, { bucketName, region }) {
+function deploy(fixture, { bucketName, region, contentEncoding }) {
   return runServerless({
     envWhitelist: ['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_SESSION_TOKEN'],
     fixture,
     configExt: {
       custom: {
-        client: { bucketName }
+        client: { bucketName, contentEncoding }
       }
     },
     command: 'client deploy',
